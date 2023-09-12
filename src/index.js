@@ -1,17 +1,35 @@
-import React from 'react';
-import ReactDOM from 'react-dom/client';
-import './index.css';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
+import React from "react";
+import ReactDOM from "react-dom/client";
+import "./index.css";
 
-const root = ReactDOM.createRoot(document.getElementById('root'));
-root.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>
-);
+const books = [
+  {
+    author: "Stephen King",
+    title: "Holly",
+    img: "https://m.media-amazon.com/images/I/417kSOgt4aL._SX325_BO1,204,203,200_.jpg",
+  },
 
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();
+  {
+    author: "Rebecca Yarros ",
+    title: "Fourth Wing",
+    img: "https://m.media-amazon.com/images/I/91n7p-j5aqL._SY466_.jpg",
+  },
+];
+
+const BookList = () => {
+  return <section className="booklist">{books}</section>;
+};
+const Book = ({ img, title, author, children }) => {
+  return (
+    <article className="book">
+      <img src={img} alt="" />
+      <h2>{title}</h2>
+      <h4>{author}</h4>
+      {children}
+    </article>
+  );
+};
+
+const root = document.getElementById("root");
+
+ReactDOM.createRoot(root).render(<BookList />);
